@@ -12,10 +12,12 @@ path = "src/main.rs"
 photon-core = { path = "../crates/photon-core" }
 photon-app = { path = "../crates/photon-app" }
 photon-store = { path = "../crates/photon-store" }
-photon-engine = { path = "../crates/photon-engine" }
 photon-blocker = { path = "../crates/photon-blocker" }
-wry = { version = "=0.55.1", features = ["os-webview"] }
-tao = "0.35"
+photon-engine = { path = "../crates/photon-engine" }
+wry = { version = "=0.55.1", features = ["os-webview"], optional = true }
+tao = { version = "0.35", optional = true }
+gtk = { version = "0.18", optional = true }
 
-[target.'cfg(not(any(target_os = "windows", target_os = "macos", target_os = "ios", target_os = "android")))'.dependencies]
-gtk = "0.18"
+[features]
+default = []
+native-ui = ["dep:wry", "dep:tao", "dep:gtk"]

@@ -71,14 +71,17 @@ web engine exist, and is verified here on **Linux x86_64**.
 ## Build & run
 
 ```sh
-cargo build --workspace        # library crates + headless CLI
-cargo test --workspace         # nav policy, store, blocker, actor, engine
+cargo build --workspace               # library crates + headless desktop (no system deps)
+cargo test --workspace                # 18/18 pass
 cargo run -p photon-cli -- https://example.com
 cargo run -p photon-cli -- https://example.com --private
-cargo run -p photon-desktop    # native window (needs webkit2gtk dev headers on Linux)
+cargo run -p photon-desktop           # headless mode (default)
+cargo run -p photon-desktop --features native-ui   # native WebView window
 ```
 
-Native desktop needs system WebKitGTK dev packages on Linux:
-`libwebkit2gtk-4.0-dev libgtk-3-dev libsoup-3.0-dev` (absent in this
-container, so `cargo check` of `photon-desktop` fails on `webkit2gtk-sys`
-until installed — the library crates build and test green without it).
+Native desktop UI on Linux needs system WebKitGTK dev packages:
+`libwebkit2gtk-4.0-dev libgtk-3-dev pkg-config` (and `libsoup-3.0-dev`
+if your distro splits it). Absent here, so `native-ui` is not compiled
+on this host — the workspace builds and tests green without it. On
+macOS/Windows, `native-ui` uses `wry`+`tao` directly (WKWebView /
+WebView2), no GTK needed.

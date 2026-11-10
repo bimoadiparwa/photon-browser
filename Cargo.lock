@@ -1678,6 +1678,7 @@ dependencies = [
  "photon-app",
  "photon-blocker",
  "photon-core",
+ "photon-engine",
  "photon-store",
  "tao",
  "wry",
