@@ -12,6 +12,7 @@ path = "src/main.rs"
 photon-core = { path = "../crates/photon-core" }
 photon-app = { path = "../crates/photon-app" }
 photon-store = { path = "../crates/photon-store" }
+photon-engine = { path = "../crates/photon-engine" }
 photon-blocker = { path = "../crates/photon-blocker" }
 wry = { version = "=0.55.1", features = ["os-webview"] }
 tao = "0.35"
