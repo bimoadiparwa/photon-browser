@@ -1,0 +1,25 @@
+[workspace]
+resolver = "2"
+members = ["crates/*", "desktop"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MPL-2.0"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+url = "2"
+rusqlite = { version = "0.32", features = ["bundled"] }
+adblock = "0.8"
+wry = "=0.55.1"
+tao = "0.35"
+# Pin: adblock 0.8 needs rmp-serde 0.15 (rmp 0.8 API); keep resolver off rmp 0.9.
+rmp = "=0.8.11"
+
+[profile.release]
+panic = "abort"
+opt-level = "s"
+lto = "thin"

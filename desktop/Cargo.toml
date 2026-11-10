@@ -1,0 +1,20 @@
+[package]
+name = "photon-desktop"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "photon"
+path = "src/main.rs"
+
+[dependencies]
+photon-core = { path = "../crates/photon-core" }
+photon-app = { path = "../crates/photon-app" }
+photon-store = { path = "../crates/photon-store" }
+photon-blocker = { path = "../crates/photon-blocker" }
+wry = { version = "=0.55.1", features = ["os-webview"] }
+tao = "0.35"
+
+[target.'cfg(not(any(target_os = "windows", target_os = "macos", target_os = "ios", target_os = "android")))'.dependencies]
+gtk = "0.18"

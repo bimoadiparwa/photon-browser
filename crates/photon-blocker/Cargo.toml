@@ -1,0 +1,9 @@
+[package]
+name = "photon-blocker"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+[dependencies]
+adblock = "0.8"
+photon-core = { path = "../photon-core" }
+thiserror.workspace = true

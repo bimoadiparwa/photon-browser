@@ -1,0 +1,12 @@
+[package]
+name = "photon-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+[dependencies]
+photon-core = { path = "../photon-core" }
+photon-app = { path = "../photon-app" }
+photon-store = { path = "../photon-store" }
+photon-blocker = { path = "../photon-blocker" }
+photon-engine = { path = "../photon-engine" }
+url.workspace = true
